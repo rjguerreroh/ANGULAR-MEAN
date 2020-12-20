@@ -1,34 +1,31 @@
 import { NgModule } from '@angular/core';
-import {APP_BASE_HREF} from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
 // Modulos
 import { PagesRoutingModule } from './pages/pages.routing';
-import { RouterModule, Routes } from '@angular/router';
-
-import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { AuthRoutingModule } from './auth/auth.routing';
 
+import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+
+
 const routes: Routes = [
+
   // path: '/dashboard' PagesRouting
   // path: '/auth' AuthRouting
   // path: '/medicos' MedicosRouting
   // path: '/compras' ComprasRouting
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: '**', component: NopagefoundComponent}
+  { path: '**', component: NopagefoundComponent },
 ];
 
+
+
 @NgModule({
-  declarations: [],
   imports: [
     RouterModule.forRoot( routes ),
     PagesRoutingModule,
     AuthRoutingModule
   ],
-  exports: [ RouterModule ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' }]
+  exports: [ RouterModule ]
 })
-
-/**
- * RouterModule.forRoot( routes ) : Aqui se define las rutas principales
- */
 export class AppRoutingModule { }
